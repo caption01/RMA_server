@@ -21,12 +21,16 @@ module.exports = (sequelize, DataType) => {
             type: DataType.INTEGER(10),
             allowNull: true
         }
-    },{
+    }, {
         freezeTableName: true,
         timestamps: true,
         updatedAt: false
     })
 
+    Users.associate = (models) => {
+        Users.hasOne(models.bills, {foreignKey: { name:'user_id', allowNull: false }}),
+        Users.belongsTo(models.restaurants, { foreignKey: { name: 'restaurant_id', allowNull: false } })
+    }
 
     return Users
 }
