@@ -12,6 +12,10 @@ module.exports = (sequelize, DataType) => {
             type: DataType.STRING,
             allowNull: false
         },
+        number: {
+            type: DataType.INTEGER(10),
+            allowNull: false
+        },
         status: {
             type: DataType.BOOLEAN,
             allowNull: false,
@@ -22,8 +26,7 @@ module.exports = (sequelize, DataType) => {
     })
 
     Tables.associate = (models) => {
-        Tables.hasMany(models.bills, {foreignKey: { name:'table_id', allowNull: false }}),
-        Tables.belongsTo(models.restaurants, {foreignKey: { name:'restaurant_id', allowNull: false }})
+        Tables.hasMany(models.orders, {foreignKey: { name:'table_id', allowNull: false }})
     }
 
     return Tables

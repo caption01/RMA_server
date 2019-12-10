@@ -10,7 +10,9 @@ const db            =   require('./models');
 
 //import model service
 const Users         =   require('./service/users.service');
-const Restaurant    =   require('./service/restaurants.service')
+const Restaurants   =   require('./service/restaurants.service');
+const Menus         =   require('./service/menus.service');
+const Tables        =   require('./service/tables.service');
 
 // port setting
 const PORT         =   3000;
@@ -24,7 +26,9 @@ db.sequelize.sync({force: true})
     .then( () => {
         
         Users(app, db);
-        Restaurant(app, db)
+        Restaurants(app, db);
+        Tables(app, db);
+
 
         app.listen(PORT, console.log(`server is running at PORT ${PORT}`));
     })

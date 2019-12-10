@@ -12,18 +12,22 @@ module.exports = (sequelize, DataType) => {
             type: DataType.STRING,
             allowNull: false
         },
+        menu_name: {
+            type: DataType.STRING,
+            allowNull: false
+        },
         quantity: {
             type: DataType.INTEGER(10),
             allowNull: false,
         }
-    },{
+    }, {
         freezeTableName: true,
         timestamps: false
     })
 
     Orders.associate = (models) => {
-        Orders.belongsTo(models.bills, {foreignKey: { name:'bill_id', allowNull: false }}),
-        Orders.hasMany(models.menus, {foreignKey: { name:'order_id', allowNull: false }})
+        Orders.belongsTo(models.bills, { foreignKey: { name: 'bill_id', allowNull: false } }),
+        Orders.belongsTo(models.tables, { foreignKey: { name: 'table_id', allowNull: false } })
     }
 
     return Orders

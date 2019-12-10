@@ -26,9 +26,8 @@ module.exports = (sequelize, DataType) => {
     })
 
     Bills.associate = (models) => {
-        Bills.belongsTo(models.users, {foreignKey: { name:'user_id', allowNull: false }}),
-        Bills.hasMany(models.orders, {foreignKey: { name:'bill_id', allowNull: false }}),
-        Bills.belongsTo(models.tables, {foreignKey: { name:'table_id', allowNull: false }})
+        Bills.hasOne(models.users, {foreignKey: { name:'bill_id', allowNull: false }}),
+        Bills.hasMany(models.orders, {foreignKey: { name:'bill_id', allowNull: false }})
     }
 
     return Bills

@@ -12,6 +12,10 @@ module.exports = (sequelize, DataType) => {
             type: DataType.STRING,
             allowNull: false
         },
+        description: {
+            type: DataType.TEXT,
+            allowNull: true,
+        },
         availiable: {
             type: DataType.BOOLEAN,
             allowNull: false,
@@ -20,11 +24,6 @@ module.exports = (sequelize, DataType) => {
         freezeTableName: true,
         timestamps: false
     })
-
-    Menus.associate = (models) => {
-        Menus.belongsTo(models.orders, {foreignKey: { name:'order_id', allowNull: false }}),
-        Menus.belongsTo(models.restaurants, {foreignKey: { name:'restaurant_id', allowNull: false }})
-    }
 
     return Menus
 }

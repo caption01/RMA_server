@@ -20,15 +20,22 @@ module.exports = (sequelize, DataType) => {
         size: {
             type: DataType.INTEGER(10),
             allowNull: true
+        },
+        date: {
+            type: DataType.DATE,
+            defaultValue: new Date()
+        },
+        table_number: {
+            type: DataType.INTEGER(10)
         }
     }, {
         freezeTableName: true,
-        timestamps: true,
+        timestamps: false,
         updatedAt: false
     })
 
     Users.associate = (models) => {
-        Users.hasOne(models.bills, {foreignKey: { name:'user_id', allowNull: false }}),
+        Users.belongsTo(models.bills, {foreignKey: { name:'bill_id', allowNull: false }}),
         Users.belongsTo(models.restaurants, { foreignKey: { name: 'restaurant_id', allowNull: false } })
     }
 
