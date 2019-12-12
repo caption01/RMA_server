@@ -25,9 +25,7 @@ module.exports = (sequelize, DataType) => {
         timestamps: false
     })
 
-    Tables.associate = (models) => {
-        Tables.hasMany(models.orders, {foreignKey: { name:'table_id', allowNull: false }})
-    }
+    Tables.associate = (models) => {}
 
     return Tables
 }

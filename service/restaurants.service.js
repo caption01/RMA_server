@@ -9,14 +9,4 @@ module.exports = (app, db) => {
             })
     })
 
-    app.post('/restaurants', (req, res) => {
-        db.restaurants.create(req.body)
-            .then(result => res.status(200).send(result))
-            .catch( err => {
-                console.log(`post restaurants ps error`)
-                res.status(501).send(err.message)
-            })
-    })
-
-    
 }

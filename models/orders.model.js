@@ -9,7 +9,11 @@ module.exports = (sequelize, DataType) => {
             unique: true
         },
         status: {
-            type: DataType.STRING,
+            type: DataType.BOOLEAN,
+            allowNull: false
+        },
+        table_number: {
+            type: DataType.INTEGER(10),
             allowNull: false
         },
         menu_name: {
@@ -22,12 +26,12 @@ module.exports = (sequelize, DataType) => {
         }
     }, {
         freezeTableName: true,
-        timestamps: false
+        timestamps: true,
+        
     })
 
     Orders.associate = (models) => {
-        Orders.belongsTo(models.bills, { foreignKey: { name: 'bill_id', allowNull: false } }),
-        Orders.belongsTo(models.tables, { foreignKey: { name: 'table_id', allowNull: false } })
+        Orders.belongsTo(models.bills, { foreignKey: { name: 'bill_id', allowNull: false } })
     }
 
     return Orders
