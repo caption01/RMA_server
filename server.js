@@ -15,6 +15,7 @@ const Restaurants   =   require('./service/restaurants.service');
 const Menus         =   require('./service/menus.service');
 const Tables        =   require('./service/tables.service');
 const Orders        =   require('./service/orders.service');
+const Bills         =   require('./service/bills.service')
 
 // port setting
 const PORT         =   3000;
@@ -32,6 +33,7 @@ db.sequelize.sync({force: true})
         Tables(app, db);
         Menus(app, db);
         Orders(app, db);
+        Bills(app, db);
 
         app.listen(PORT, console.log(`server is running at PORT ${PORT}`));
     })

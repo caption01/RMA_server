@@ -38,7 +38,7 @@ module.exports = (sequelize, DataType) => {
 
     Users.associate = (models) => {
         Users.belongsTo(models.restaurants, { foreignKey: { name: 'restaurant_id', allowNull: false } }),
-        Users.hasOne(models.bills, { foreignKey: { name: 'user_id', allowNull: false}})
+        Users.hasOne(models.bills, { foreignKey: { name: 'user_key', allowNull: false}})
     }
 
     return Users

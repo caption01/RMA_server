@@ -19,6 +19,10 @@ module.exports = (sequelize, DataType) => {
         bill_status: {
             type: DataType.STRING,
             allowNull: false
+        },
+        bill_qrcode: {
+            type: DataType.TEXT,
+            allowNull: true
         }
     },{
         freezeTableName: true,
@@ -27,7 +31,7 @@ module.exports = (sequelize, DataType) => {
 
     Bills.associate = (models) => {
         Bills.hasMany(models.orders, {foreignKey: { name:'bill_id', allowNull: false }}),
-        Bills.belongsTo(models.users, {foreignKey: {name:'user_id', allowNull: false}})
+        Bills.belongsTo(models.users, {foreignKey: {name:'user_key', allowNull: false}})
     }
 
     return Bills
