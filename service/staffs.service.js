@@ -1,6 +1,6 @@
 module.exports = (app, db) => {
 
-    app.get('/staff', (req, res) => {
+    app.post('/staff', (req, res) => {
         
         const staff_id = req.body.staff_id;
         const staff_pass = req.body.staff_pass;
@@ -10,10 +10,11 @@ module.exports = (app, db) => {
                 staff_id : staff_id,
                 staff_password : staff_pass
             }
-        }).then(result => res.status(200).send(result))
+        })
+        .then(result => res.status(200).send(result))
         .catch(err => {
-            console.log('get staff ps error');
-            
+            console.log('post staff ps error');
+            res.status(500).send(`error ${err}`)
         })
 
 

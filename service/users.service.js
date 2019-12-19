@@ -21,28 +21,28 @@ module.exports = (app, db) => {
         const restaurantId = restaurantObj[0].restaurant_id
 
         req.body.restaurant_id = restaurantId
-        req.body.date = `${new Date()}`
+
+        const date = new Date()
+        req.body.date = date.toISOString();
 
         // create user
         const resultFromUsersTable = await  db.users.create(req.body)
         
-        const userId = resultFromUsersTable.user_id;
-        const userPass = resultFromUsersTable.user_password;
+        const userKey = resultFromUsersTable.user_key;
 
         // crate QR-code generater function
-        const generateQR = async (userId, userPass) => {
+        const generateQR = async (userKey) => {
             try {
-                return await QRCode.toDataURL(`http://localhost:3000/qrlogin/${userId}/${userPass}`)
+                return await QRCode.toDataURL(`http://localhost:3001/qrlogin/${userKey}`)
             } catch (err) {
                 console.error('create QR-Code error')
             }
           }
 
-        const date = new Date()
+        
         date.setHours(date.getHours() + 1)
-        const userKey = resultFromUsersTable.user_key
         const sizeCustomer =  resultFromUsersTable.size
-        const billQRcode = await generateQR(userId, userPass)
+        const billQRcode = await generateQR(userKey)
 
         // set data to create bill for user
         const dateToBills = {
@@ -60,7 +60,10 @@ module.exports = (app, db) => {
         const selectedTable = req.body.table_number
 
         db.tables.update({
-            status: false
+            status: false,
+            user_key: resultFromBillsTable.user_key,
+            time_end: resultFromBillsTable.bill_endTime,
+            qrcode: resultFromBillsTable.bill_qrcode
         }, {
             where: {
                 number: selectedTable

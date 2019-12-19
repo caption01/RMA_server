@@ -8,14 +8,6 @@ module.exports = (sequelize, DataType) => {
             primaryKey: true,
             unique: true
         },
-        user_id: {
-            type: DataType.STRING,
-            allowNull: false
-        },
-        user_password: {
-            type: DataType.STRING,
-            allowNull: false,
-        },
         role: {
             type: DataType.STRING,
             allowNull: false

@@ -19,6 +19,15 @@ module.exports = (sequelize, DataType) => {
         status: {
             type: DataType.BOOLEAN,
             allowNull: false,
+        },
+        user_key: {
+            type: DataType.UUID
+        },
+        time_end: {
+            type: DataType.STRING
+        },
+        qrcode: {
+            type: DataType.TEXT
         }
     },{
         freezeTableName: true,

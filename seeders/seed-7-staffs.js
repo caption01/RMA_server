@@ -12,7 +12,7 @@ module.exports = {
         staff_key: 'SEED-STAF-ABCD-0002',
         staff_id: 'staffboh01',
         staff_password: 'boh01pass',
-        role: 'foh'
+        role: 'boh'
     }], {})
   },
 

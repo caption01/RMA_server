@@ -9,8 +9,6 @@ module.exports = {
 
     return queryInterface.bulkInsert('users', [{
         user_key: 'ABCD-ABCD-ABCD-ABCD',
-        user_id: 'seed-data-user-table3',
-        user_password: 'seeduserpass1',
         role: 'customer',
         size: 4,
         date: date.toISOString(),
