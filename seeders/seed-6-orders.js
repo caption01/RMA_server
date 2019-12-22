@@ -14,7 +14,7 @@ module.exports = {
         updatedAt: new Date()
     },{
         order_id: 'SEED-ORDER-ABCD-0002',
-        status: false,
+        status: true,
         table_number: 3,
         menu_name: 'brownRice',
         quantity: 4,

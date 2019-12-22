@@ -31,6 +31,7 @@ module.exports = (sequelize, DataType) => {
 
     Bills.associate = (models) => {
         Bills.hasMany(models.orders, {foreignKey: { name:'bill_id', allowNull: false }}),
+        Bills.hasMany(models.historys, {foreignKey: { name:'bill_id', allowNull: false }}),
         Bills.belongsTo(models.users, {foreignKey: {name:'user_key', allowNull: false}})
     }
 
