@@ -9,7 +9,8 @@ module.exports = (app, db) => {
                 .map(menu => {
                     let menus = {
                         name: menu.name,
-                        description: menu.description
+                        description: menu.description,
+                        imageUrl: menu.imageUrl
                     }
                     return menus
                 })

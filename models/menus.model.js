@@ -12,12 +12,20 @@ module.exports = (sequelize, DataType) => {
             type: DataType.STRING,
             allowNull: false
         },
+        type: {
+            type: DataType.STRING,
+            allowNull: false
+        },
         description: {
             type: DataType.TEXT,
             allowNull: true,
         },
         availiable: {
             type: DataType.BOOLEAN,
+            allowNull: false,
+        },
+        imageUrl: {
+            type: DataType.TEXT,
             allowNull: false,
         }
     },{

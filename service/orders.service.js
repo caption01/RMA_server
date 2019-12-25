@@ -4,7 +4,7 @@ module.exports = (app, db) => {
     app.get('/orders', async (req, res) => {
 
         try {
-            const resultFromOrdersTable = await db.orders.findAll()
+            const resultFromOrdersTable = await db.orders.findAll({order:  [['createdAt', 'ASC']]})
 
             res.status(200).send(resultFromOrdersTable)
         } catch (err) {
