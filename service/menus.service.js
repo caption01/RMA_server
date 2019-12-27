@@ -10,7 +10,8 @@ module.exports = (app, db) => {
                     let menus = {
                         name: menu.name,
                         description: menu.description,
-                        imageUrl: menu.imageUrl
+                        imageUrl: menu.imageUrl,
+                        type: menu.type
                     }
                     return menus
                 })

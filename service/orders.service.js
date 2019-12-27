@@ -20,8 +20,9 @@ module.exports = (app, db) => {
     
         try {
             const resultFromOrdersTable = await db.orders.findAll({
+                order:  [['createdAt', 'DESC']]
+            },{
                 where: {
-                    status: 1,
                     table_number: tableNumber
                 }
             })
@@ -30,7 +31,8 @@ module.exports = (app, db) => {
                 .map(order => {
                     let orderObj = {
                         name: order.menu_name,
-                        unit: order.quantity
+                        unit: order.quantity,
+                        createdAt: order.createdAt
                     }
                     return orderObj
                 })
@@ -54,7 +56,8 @@ module.exports = (app, db) => {
                 table_number: req.body.table_number,
                 menu_name: order.name,
                 quantity: order.unit,
-                bill_id: req.body.bill_id
+                bill_id: req.body.bill_id,
+                createdAt: `${new Date()}`
             }
             db.orders.create(orderToOrdersTable)
                 .then(result => console.log('order has been create'))
@@ -102,6 +105,28 @@ module.exports = (app, db) => {
         }).then(result => db.historys.create(orderToClear))
             .then(res.status(200).send('confirm order success'))
             .catch(err => res.status(500).send(`cant serve order ${err}`))
+    })
+
+
+        // get customer order history
+
+    app.get('/orders/history/:bill_id', async (req, res) => {
+
+    try {
+        const resultFromHistoryTable = await db.historys.findAll({
+            where: {
+                bill_id: req.params.bill_id
+            }}   
+            ,{
+                order:  [['createdAt', 'DESC']]
+            })
+
+        res.status(200).send(resultFromHistoryTable)
+    } catch (err) {
+        console.log(`get orders history ps error`)
+        res.status(501).send(err.message)
+    }
+    
     })
 
 }

@@ -23,10 +23,13 @@ module.exports = (sequelize, DataType) => {
         quantity: {
             type: DataType.INTEGER(10),
             allowNull: false,
+        },
+        createdAt: {
+            type: DataType.STRING
         }
     }, {
         freezeTableName: true,
-        timestamps: true,
+        timestamps: false,
         
     })
 
