@@ -95,7 +95,8 @@ module.exports = (app, db) => {
         const orderToClear = {
             menu_name: OrderItem.menu_name,
             quantity: OrderItem.quantity,
-            bill_id:  OrderItem.bill_id
+            bill_id:  OrderItem.bill_id,
+            createdAt: OrderItem.createdAt
         }
 
         db.orders.destroy({
@@ -116,10 +117,9 @@ module.exports = (app, db) => {
         const resultFromHistoryTable = await db.historys.findAll({
             where: {
                 bill_id: req.params.bill_id
-            }}   
-            ,{
-                order:  [['createdAt', 'DESC']]
-            })
+            },
+            order:  [['createdAt', 'DESC']]
+        })
 
         res.status(200).send(resultFromHistoryTable)
     } catch (err) {

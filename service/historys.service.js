@@ -4,7 +4,9 @@ module.exports = (app, db) => {
     app.get('/history', async (req, res) => {
 
         try {
-            const resultFromHistory= await db.historys.findAll()
+            const resultFromHistory= await db.historys.findAll({
+                order:  [['createdAt', 'ASC']]
+            })
             res.status(200).send(resultFromHistory)
         } catch (err) {
             console.log(`get history ps error`)
