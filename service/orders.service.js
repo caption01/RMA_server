@@ -57,6 +57,7 @@ module.exports = (app, db) => {
                 menu_name: order.name,
                 quantity: order.unit,
                 bill_id: req.body.bill_id,
+                type: order.type,
                 createdAt: `${new Date()}`
             }
             db.orders.create(orderToOrdersTable)
@@ -96,6 +97,7 @@ module.exports = (app, db) => {
             menu_name: OrderItem.menu_name,
             quantity: OrderItem.quantity,
             bill_id:  OrderItem.bill_id,
+            type: OrderItem.type,
             createdAt: OrderItem.createdAt
         }
 

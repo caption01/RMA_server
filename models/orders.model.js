@@ -26,6 +26,9 @@ module.exports = (sequelize, DataType) => {
         },
         createdAt: {
             type: DataType.STRING
+        },
+        type: {
+            type: DataType.STRING
         }
     }, {
         freezeTableName: true,

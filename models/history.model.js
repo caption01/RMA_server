@@ -16,6 +16,9 @@ module.exports = (sequelize, DataType) => {
             type: DataType.INTEGER(10),
             allowNull: false,
         },
+        type: {
+            type: DataType.STRING
+        },
         createdAt: {
             type: DataType.STRING
         }
