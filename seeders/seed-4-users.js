@@ -11,7 +11,7 @@ module.exports = {
         user_key: 'ABCD-ABCD-ABCD-ABCD',
         role: 'customer',
         size: 4,
-        date: date.toISOString(),
+        date: date,
         table_number: 3,
         restaurant_id: '0001'
     }], {})

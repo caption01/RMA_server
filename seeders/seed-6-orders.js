@@ -10,7 +10,7 @@ module.exports = {
         menu_name: 'waguSteak',
         quantity: 3,
         bill_id: 'SEED-BILL-ABCD-ABCD',
-        createdAt: new Date()
+        createdAt: new Date().toISOString()
     },{
         order_id: 'SEED-ORDER-ABCD-0002',
         status: true,
@@ -18,7 +18,7 @@ module.exports = {
         menu_name: 'brownRice',
         quantity: 4,
         bill_id: 'SEED-BILL-ABCD-ABCD',
-        createdAt: new Date()
+        createdAt: new Date().toISOString()
     },{
         order_id: 'SEED-ORDER-ABCD-0003',
         status: true,
@@ -26,7 +26,7 @@ module.exports = {
         menu_name: 'watermelonJuice',
         quantity: 2,
         bill_id: 'SEED-BILL-ABCD-ABCD',
-        createdAt: new Date()
+        createdAt: new Date().toISOString()
     }], {})
   },
 
