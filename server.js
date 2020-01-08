@@ -6,6 +6,8 @@ const cors          =   require('cors');
 const fetch         =   require('node-fetch');
 const moment        =   require('moment');
 
+const Sequelize     =   require('sequelize')
+
 // import database to create model
 const db            =   require('./models');
 
@@ -24,6 +26,8 @@ const PORT         =   3000;
 
 const app = express();
 
+const Op = Sequelize.Op;
+
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -37,7 +41,7 @@ db.sequelize.sync({force: true})
         Orders(app, db);
         Bills(app, db);
         Staffs(app, db);
-        History(app, db);
+        History(app, db, Op);
 
         app.listen(PORT, console.log(`server is running at PORT ${PORT}`));
     })

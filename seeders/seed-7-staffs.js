@@ -13,7 +13,13 @@ module.exports = {
         staff_id: 'staffboh01',
         staff_password: 'boh01pass',
         role: 'boh'
-    }], {})
+    },{
+        staff_key: 'SEED-STAF-ABCD-0003',
+        staff_id: 'staffown01',
+        staff_password: 'own01pass',
+        role: 'owner'
+    }
+  ], {})
   },
 
   down: (queryInterface, Sequelize) => {

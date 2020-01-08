@@ -20,11 +20,10 @@ module.exports = (app, db) => {
     
         try {
             const resultFromOrdersTable = await db.orders.findAll({
-                order:  [['createdAt', 'DESC']]
-            },{
-                where: {
+                where:{
                     table_number: tableNumber
-                }
+                },
+                order:  [['createdAt', 'DESC']]
             })
 
             const OrderList = resultFromOrdersTable
@@ -58,7 +57,7 @@ module.exports = (app, db) => {
                 quantity: order.unit,
                 bill_id: req.body.bill_id,
                 type: order.type,
-                createdAt: `${new Date()}`
+                createdAt: `${new Date().toISOString()}`
             }
             db.orders.create(orderToOrdersTable)
                 .then(result => console.log('order has been create'))
